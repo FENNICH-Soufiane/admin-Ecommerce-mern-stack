@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+var cors = require('cors');
 
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -9,6 +10,7 @@ const productRoute = require("./routes/product");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const paymentRoute = require("./routes/stripe");
+
 
 
 
@@ -26,6 +28,7 @@ app.listen(port, () => {
     console.log("Backend server is runing : " + port)
 });
 
+app.use(cors())
 app.use(express.json());
 app.use("/api/user", userRoute);
 app.use("/api/auth", authRoute);
